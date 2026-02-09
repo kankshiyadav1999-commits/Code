@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For Cheeku 💖</title>
+<title>For Vishal 💙</title>
 
 <style>
 body {
     margin: 0;
     height: 100vh;
-    background: #f7c6d0;
+    background: linear-gradient(135deg, #b3d9ff, #6fa8dc); /* 💙 Blue background */
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
@@ -34,7 +34,7 @@ body {
 }
 
 h2 {
-    font-size: 22px;
+    font-size: 21px;
     margin-bottom: 25px;
 }
 
@@ -52,7 +52,7 @@ button {
 }
 
 #yesBtn {
-    background: #ff4d6d;
+    background: #4d79ff; /* blue button */
     color: white;
 }
 
@@ -65,11 +65,11 @@ button {
     pointer-events: none;
 }
 
-/* 💖 Slow-motion hearts */
+/* 💙 Slow-motion emoji shower */
 .fall {
     position: fixed;
     top: -20px;
-    font-size: 24px;
+    font-size: 26px;
     animation: slowFall linear forwards;
     pointer-events: none;
     z-index: 9999;
@@ -90,7 +90,7 @@ button {
 #loveScreen {
     position: fixed;
     inset: 0;
-    background: linear-gradient(#ff9a9e, #fad0c4);
+    background: linear-gradient(#6fa8dc, #3d85c6); /* deeper blue */
     display: none;
     justify-content: center;
     align-items: center;
@@ -110,7 +110,7 @@ button {
     font-size: 22px;
     margin-top: 15px;
     opacity: 0;
-    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    text-shadow: 0 0 10px rgba(255,255,255,0.9);
 }
 
 .glowPulse {
@@ -120,13 +120,24 @@ button {
 @keyframes glowPulse {
     0% {
         transform: scale(1);
-        text-shadow: 0 0 10px #fff, 0 0 20px #ff4d6d;
+        text-shadow: 0 0 10px #ffffff, 0 0 20px #6fa8dc;
     }
     100% {
         transform: scale(1.15);
-        text-shadow: 0 0 20px #fff, 0 0 40px #ff4d6d;
+        text-shadow: 0 0 20px #ffffff, 0 0 40px #3d85c6;
     }
 }
+#loveGif {
+    width: 220px;
+    margin-bottom: 20px;
+    animation: fadeIn 1.5s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 </style>
 </head>
 
@@ -134,10 +145,10 @@ button {
 
 <div class="card" id="card">
     <img class="gif"
-         src="https://media4.giphy.com/media/SYo1DFS8NLhhqzzjMU/giphy.gif"
-         alt="hug">
+         src="https://media.giphy.com/media/qFmdpUKAFZ6rMobzzu/giphy.gif"
+         alt="Cute cat hug">
 
-    <h2>Will you be my Valentine Cheeku? 💕</h2>
+    <h2>Will you be my Valentine Vishal?💙</h2>
 
     <div class="buttons">
         <button id="yesBtn" onclick="yesClicked()">Yes</button>
@@ -147,13 +158,20 @@ button {
 
 <!-- 💌 Love Screen -->
 <div id="loveScreen">
+    <img id="loveGif"
+         src="https://media.giphy.com/media/KD1D49tK4Hvl6E5q1T/giphy.gif"
+         alt="Valentine Love GIF">
+
     <div id="typing"></div>
     <div id="finalMsg"></div>
 </div>
 
+
 <script>
 const noBtn = document.getElementById("noBtn");
-const emojis = ["💖","💕","❤️","💘","🎉"];
+
+/* 💙 NEW EMOJI SET */
+const emojis = ["💙","🌟","✨","💫","🌍","🧿"];
 
 // Move NO
 function moveNo() {
@@ -168,15 +186,15 @@ function yesClicked() {
     document.getElementById("card").style.display = "none";
     document.getElementById("loveScreen").style.display = "flex";
 
-    slowHeartRain();
+    slowEmojiRain();
 
-    typeText("I Love You Cheeku 💖", document.getElementById("typing"), () => {
+    typeText("I Love You Vishal 💋", document.getElementById("typing"), () => {
         const finalMsg = document.getElementById("finalMsg");
-        finalMsg.innerHTML = "Yay! 💖 I love you to the power infinityyyyy… MOREEEE! 💖";
+        finalMsg.innerHTML = "For the highs and lows and moments in between, I will always love you.. XOXO ❤️‍🔥";
         finalMsg.style.opacity = 1;
         finalMsg.classList.add("glowPulse");
 
-        slowHeartBurst();
+        slowEmojiBurst();
     });
 }
 
@@ -194,25 +212,25 @@ function typeText(text, element, callback) {
     }, 120);
 }
 
-// 🌧️ Slow background heart rain
-function slowHeartRain() {
-    for (let i = 0; i < 200; i++) {
-        createSlowHeart(Math.random() * 100 + "vw", -20);
+// 🌧️ Slow background emoji rain
+function slowEmojiRain() {
+    for (let i = 0; i < 180; i++) {
+        createSlowEmoji(Math.random() * 100 + "vw", -20);
     }
 }
 
 
-// Create slow heart
-function createSlowHeart(left, top) {
-    const h = document.createElement("div");
-    h.className = "fall";
-    h.innerText = emojis[Math.floor(Math.random() * emojis.length)];
-    h.style.left = left;
-    h.style.top = top;
-    h.style.animationDuration = (Math.random() * 4 + 5) + "s"; // SLOW
-    document.body.appendChild(h);
+// Create slow emoji
+function createSlowEmoji(left, top) {
+    const e = document.createElement("div");
+    e.className = "fall";
+    e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    e.style.left = left;
+    e.style.top = top;
+    e.style.animationDuration = (Math.random() * 4 + 5) + "s";
+    document.body.appendChild(e);
 
-    setTimeout(() => h.remove(), 9000);
+    setTimeout(() => e.remove(), 9000);
 }
 </script>
 
